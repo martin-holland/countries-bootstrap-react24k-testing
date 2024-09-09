@@ -10,9 +10,15 @@ const getAllCountries = async () => {
 
 const initializeCountries = () => {
   return async (dispatch) => {
-    const countries = await getAllCountries();
-    dispatch(getCountries(countries));
-    dispatch(isLoading(false));
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    try {
+      const countries = await getAllCountries(); // Await the countries data
+      dispatch(getCountries(countries)); // Now you can dispatch the countries data
+    } catch (error) {
+      console.error("Error fetching countries:", error);
+    } finally {
+      dispatch(isLoading(false)); // Ensure loading state is updated
+    }
   };
 };
 
