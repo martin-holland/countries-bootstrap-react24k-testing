@@ -17,7 +17,10 @@ const Favourites = () => {
   const favouritesList = useSelector((state) => state.favourites.favourites);
   const favouritesLoading = useSelector((state) => state.favourites.isLoading);
 
-  if (favouritesList !== null) {
+  console.log("favouritesList: ", favouritesList);
+  console.log("countriesList inside favourites: ", countriesList);
+
+  if (Array.isArray(favouritesList) && favouritesList.length > 0) {
     countriesList = countriesList.filter((country) =>
       favouritesList.includes(country.name.common)
     );
