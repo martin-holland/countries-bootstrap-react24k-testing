@@ -10,7 +10,6 @@ const getAllCountries = async () => {
 
 const initializeCountries = () => {
   return async (dispatch) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
     try {
       const countries = await getAllCountries(); // Await the countries data
       dispatch(getCountries(countries)); // Now you can dispatch the countries data
